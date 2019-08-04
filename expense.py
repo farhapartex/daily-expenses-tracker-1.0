@@ -18,4 +18,11 @@ if __name__ == "__main__":
     else:
         cost = CostFunction()
         cost.say_hello()
+
+        while True:
+            ask = input("again/done: ")
+            if ask == "again":
+                print("AGAIN")
+            elif ask == "done":
+                break  
         

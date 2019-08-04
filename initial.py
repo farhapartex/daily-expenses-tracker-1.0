@@ -20,6 +20,7 @@ class InitialComponent():
                 current_amount = input("Type your current amount: ")
                 total_expense_file.write(current_amount)
                 total_expense_file.close()
+                print("Your initial balance is created. Thanks you!")
             return True
         else:
             return False
