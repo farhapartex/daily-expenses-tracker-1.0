@@ -1,5 +1,6 @@
 import datetime
 from initial import InitialComponent
+from cost import CostFunction
 
 # current_date = datetime.datetime.now()
 # local_date_time = current_date.strftime("%c")
@@ -15,7 +16,6 @@ if __name__ == "__main__":
     if not initial.check_initial():
         initial.create_initial_setup()
     else:
-        current_date = datetime.datetime.now()
-        local_date_time = current_date.strftime("%c")
-        print(local_date_time)
+        cost = CostFunction()
+        cost.say_hello()
         
