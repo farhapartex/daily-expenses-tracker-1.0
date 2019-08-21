@@ -1,5 +1,9 @@
 ## Daily Expenses Record CLI Tool
 
+#### Prerequisite
+
+* Python 3
+
 ### Initial Setup:
 * Clone the repository
 * Enter the folder `daily-expenses`
