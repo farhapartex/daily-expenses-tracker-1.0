@@ -1,5 +1,12 @@
 ## Daily Expenses Record CLI Tool
 
+### Initial Setup:
+* clone the repository
+* Enter the folder `daily-expenses`
+* Run the command `python3 expense.py`
+* Set your initial balance
+* For more command see below 
+
 ### Necessary commands to run the CLI
 
 * Get Help: `help`
