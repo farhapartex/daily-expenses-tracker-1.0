@@ -3,7 +3,8 @@ from pathlib import Path
 import os.path 
 import os
 
-FILE_DIR = os.getcwd() + "/expense_dir"
+FILE_DIR = os.getcwd() + "/files/expense_dir"
+USER_DIR = os.getcwd() + "/files/user"
 
 class CostFunction():
 
@@ -15,14 +16,18 @@ class CostFunction():
     def say_hello(self):
         current_date = datetime.datetime.now()
         local_date_time = current_date.strftime("%c")
-        print("Welcome Mr. Nazmul Hasan")
+        user = "User"
+        if Path(USER_DIR + "/user.txt").is_file():
+            with open(USER_DIR + "/user.txt", "r") as user_flle:
+                user = user_flle.readline().strip("\n")
+        print("Welcome Mr. {0}".format(user))
         print(local_date_time)
         print("Current balance: {0}".format(self.current_balanace()))
     
     def command(self, cmd):
         cmd = cmd.split()
         main_cmd = cmd[0]
-        if main_cmd == 'cost':
+        if main_cmd == 'expense':
             amounts = cmd[1].split(",")
             amounts = [int(x) for x in amounts]
             current_date = datetime.datetime.now()
@@ -62,8 +67,11 @@ class CostFunction():
         elif main_cmd == "history":
             if Path(FILE_DIR + "/daily_expenses.txt").is_file():
                 with open(FILE_DIR + "/daily_expenses.txt", "r") as daily_expenses:
-                    for expense in daily_expenses:
-                        print(expense.strip("\n"))
+                    if daily_expenses.readline().strip("\n") == "":
+                        print("No history found!")
+                    else:
+                        for expense in daily_expenses:
+                            print(expense.strip("\n"))
                     daily_expenses.close()
             return True
 

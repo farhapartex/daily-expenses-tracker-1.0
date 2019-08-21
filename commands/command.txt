@@ -1,5 +1,5 @@
 # Get Help: help
 # Check current balance: balance
-# Save costs: cost cost1,cost2,cost3,.... (cost1,cost2,cost3 are values)
+# Save expense: expense cost1,cost2,cost3,.... (cost1,cost2,cost3 are values)
 # Get expense history: history
 # Stop CLI: stop 

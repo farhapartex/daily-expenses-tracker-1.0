@@ -3,7 +3,8 @@ import os
 import os.path 
 
 CURRENT_DIR = os.getcwd()
-EXPENSE_DIR = CURRENT_DIR + '/expense_dir'
+USER_DIR = CURRENT_DIR + "/files/user"
+EXPENSE_DIR = CURRENT_DIR + '/files/expense_dir'
 
 class InitialComponent():
 
@@ -12,9 +13,46 @@ class InitialComponent():
             return True
         else:
             return False
+
+    def check_user(self):
+        if not os.path.exists(USER_DIR):
+            return False
+        else:
+            return True
+
+
+    def check_user_exist(self):
+        if Path(USER_DIR + "/user.txt").is_file():
+            with open(USER_DIR + "/user.txt", "r") as user_file:
+                if len(user_file.readline().strip("\n")) == 0:
+                    return False
+                else:
+                    return True
+
+
+    def create_user(self):
+        if not os.path.exists(USER_DIR):
+            os.makedirs(USER_DIR)
+        with open(USER_DIR + "/user.txt", "a") as user_file:
+            user_name = input("User Name: ")
+            user_file.write(user_name)
+            user_file.close()
+    
+    def update_user(self):
+        if Path(USER_DIR + "/user.txt").is_file():
+            user_name = input("User Name: ")
+            with open(USER_DIR + "/user.txt", "r+") as user_file:
+                user = user_file.read()
+                user.seek(0)
+                user_file.write(user_name)
+                user_file.truncate()
+                user_file.close()
+
             
     def create_initial_setup(self):
-        os.mkdir(EXPENSE_DIR)
+        if not os.path.exists(EXPENSE_DIR):
+            os.makedirs(EXPENSE_DIR)
+        
         if Path(EXPENSE_DIR).is_dir():
             with open(EXPENSE_DIR+"/total_balance.txt","a") as total_expense_file:
                 current_amount = input("Type your current amount: ")

@@ -12,18 +12,25 @@ from cost import CostFunction
 # f.close()
 
 if __name__ == "__main__":
+
     initial = InitialComponent()
+    cost = CostFunction()
+
     if not initial.check_initial():
         initial.create_initial_setup()
-    else:
-        cost = CostFunction()
-        cost.say_hello()
+    
+    if not initial.check_user():
+        initial.create_user()
+    elif not initial.check_user_exist():
+        initial.create_user()
+        
+    cost.say_hello()
 
-        while True:
-            usr_cmd = input("command: ")
-            response = cost.command(usr_cmd)
+    # while True:
+    #     usr_cmd = input("command: ")
+    #     response = cost.command(usr_cmd)
 
-            if response == False:
-                break
+    #     if response == False:
+    #         break
               
         
