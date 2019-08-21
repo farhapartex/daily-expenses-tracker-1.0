@@ -20,9 +20,10 @@ if __name__ == "__main__":
         cost.say_hello()
 
         while True:
-            ask = input("again/done: ")
-            if ask == "again":
-                print("AGAIN")
-            elif ask == "done":
-                break  
+            usr_cmd = input("command: ")
+            response = cost.command(usr_cmd)
+
+            if response == False:
+                break
+              
         
