@@ -26,11 +26,11 @@ if __name__ == "__main__":
         
     cost.say_hello()
 
-    # while True:
-    #     usr_cmd = input("command: ")
-    #     response = cost.command(usr_cmd)
+    while True:
+        usr_cmd = input("command: ")
+        response = cost.command(usr_cmd)
 
-    #     if response == False:
-    #         break
+        if response == False:
+            break
               
         

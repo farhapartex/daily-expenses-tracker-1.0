@@ -67,7 +67,7 @@ class CostFunction():
         elif main_cmd == "history":
             if Path(FILE_DIR + "/daily_expenses.txt").is_file():
                 with open(FILE_DIR + "/daily_expenses.txt", "r") as daily_expenses:
-                    if daily_expenses.readline().strip("\n") == "":
+                    if len(daily_expenses.readline().strip("\n")) == 0:
                         print("No history found!")
                     else:
                         for expense in daily_expenses:
