@@ -1,6 +1,7 @@
 import datetime
 from initial import InitialComponent
 from cost import CostFunction
+import sys
 
 # current_date = datetime.datetime.now()
 # local_date_time = current_date.strftime("%c")
@@ -17,7 +18,12 @@ if __name__ == "__main__":
     cost = CostFunction()
 
     if not initial.check_initial():
-        initial.create_initial_setup()
+        current_amount = input("Type your current amount: ")
+        if len(current_amount) == 0:
+            print("Please Enter a valid amount")
+            sys.exit()
+        else:
+            initial.create_initial_setup(current_amount)
     
     if not initial.check_user():
         initial.create_user()
