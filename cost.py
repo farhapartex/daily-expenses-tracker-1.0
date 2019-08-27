@@ -51,11 +51,28 @@ class CostFunction():
 
         elif main_cmd == "balance":
             if Path(FILE_DIR + "/total_balance.txt").is_file():
-                with open(FILE_DIR + "/total_balance.txt", "r") as total_expense:
-                    balance = total_expense.read()
+                with open(FILE_DIR + "/total_balance.txt", "r") as total_balance:
+                    balance = total_balance.read()
                     print(balance.strip("\n"))
-                    total_expense.close()
+                    total_balance.close()
             return True
+
+        elif main_cmd == "add":
+            if Path(FILE_DIR + "/total_balance.txt").is_file():
+                with open(FILE_DIR + "/total_balance.txt", "r+") as total_balance:
+                    balance = total_balance.read()
+                    balance = int(balance)
+                    amounts = cmd[1].replace(",","")
+                    amounts = int(amounts)
+                    balance += amounts
+
+                    total_balance.seek(0)
+                    total_balance.write(str(balance))
+                    total_balance.truncate()
+                    total_balance.close()
+                    print("Balance Updated! Current balance: {0}".format(balance))
+            return True
+
 
         elif main_cmd == 'help':
             with open(os.getcwd() + "/commands/command.txt", "r") as cmd_file:
