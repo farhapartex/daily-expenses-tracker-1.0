@@ -1,5 +1,7 @@
 ## Daily Expenses Record CLI Tool
 
+#### ***This project is under construction
+
 #### Prerequisite
 
 * Python 3
