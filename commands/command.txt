@@ -2,5 +2,6 @@
 # Check current balance: balance
 # Add balance: `add amount` (Input single amount for single time, Ex: add 5,000 or add 5000 or add 12.236)
 # Save expense: expense cost1,cost2,cost3,.... (cost1,cost2,cost3 are values)
+# To delete current balance : delete
 # Get expense history: history
 # Stop CLI: stop 

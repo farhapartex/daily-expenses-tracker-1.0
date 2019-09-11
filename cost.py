@@ -22,30 +22,37 @@ class CostFunction():
                 user = user_flle.readline().strip("\n")
         print("Welcome Mr. {0}".format(user))
         print(local_date_time)
-        print("Current balance: {0}".format(self.current_balanace()))
+        print("Current balance: {:.2f}".format(float(self.current_balanace())))
     
     def command(self, cmd):
         cmd = cmd.split()
         main_cmd = cmd[0]
         if main_cmd == 'expense':
+            # amounts = cmd[1].strip()
             amounts = cmd[1].split(",")
-            amounts = [float(x) for x in amounts]
-            current_date = datetime.datetime.now()
-            local_date_time = current_date.strftime("%c")
-            total_amount = sum(amounts)
+            try:
+                amounts = [float(x) for x in amounts]
+                current_date = datetime.datetime.now()
+                local_date_time = current_date.strftime("%c")
+                total_amount = sum(amounts)
 
-            if Path(FILE_DIR + "/daily_expenses.txt").is_file() and Path(FILE_DIR + "/total_balance.txt").is_file():
-                with open(FILE_DIR + "/daily_expenses.txt", "a") as daily_expense:
-                    daily_expense.write(local_date_time + " -----> " + str(total_amount) + "\n")
-                    daily_expense.close()
-                with open(FILE_DIR + "/total_balance.txt", "r+") as total_expense:
-                    balance = total_expense.read()
-                    balance = float(balance)
-                    balance -= total_amount
-                    total_expense.seek(0)
-                    total_expense.write(str(balance))
-                    total_expense.truncate()
-                    total_expense.close()
+                if Path(FILE_DIR + "/daily_expenses.txt").is_file() and Path(FILE_DIR + "/total_balance.txt").is_file():
+                    with open(FILE_DIR + "/daily_expenses.txt", "a") as daily_expense:
+                        daily_expense.write(local_date_time + " -----> " + str(total_amount) + "\n")
+                        daily_expense.close()
+                        with open(FILE_DIR + "/total_balance.txt", "r+") as total_expense:
+                            balance = total_expense.read()
+                            balance = float(balance)
+                            balance -= total_amount
+                            if balance < 0.0:
+                                print("You have crossed balance!! Please add")
+                            total_expense.seek(0)
+                            total_expense.write(str(balance))
+                            total_expense.truncate()
+                            total_expense.close()
+            except:
+                print("Wrong input. type help to see commands")
+            
 
             return True
 
@@ -53,7 +60,10 @@ class CostFunction():
             if Path(FILE_DIR + "/total_balance.txt").is_file():
                 with open(FILE_DIR + "/total_balance.txt", "r") as total_balance:
                     balance = total_balance.read()
-                    print(balance.strip("\n"))
+                    balance = float(balance.strip("\n"))
+                    print("%.2f" % balance)
+                    if balance < 0.0:
+                        print("Your balance is negative!! Please add")
                     total_balance.close()
             return True
 
@@ -71,6 +81,16 @@ class CostFunction():
                     total_balance.truncate()
                     total_balance.close()
                     print("Balance Updated! Current balance: {0}".format(balance))
+            return True
+
+        elif main_cmd == "delete":
+            if Path(FILE_DIR + "/total_balance.txt").is_file():
+                with open(FILE_DIR + "/total_balance.txt", "r+") as total_balance:
+                    total_balance.write(str(0))
+                    total_balance.truncate()
+                    total_balance.close()
+
+                    print("Balance deleted!")
             return True
 
 
