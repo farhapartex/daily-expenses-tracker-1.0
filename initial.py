@@ -59,6 +59,7 @@ class InitialComponent():
         if Path(EXPENSE_DIR).is_dir():
             with open(EXPENSE_DIR+"/total_balance.txt","a") as total_expense_file:
                 #current_amount = input("Type your current amount: ")
+                current_amount = current_amount.replace(",","")
                 total_expense_file.write(current_amount)
                 total_expense_file.close()
             with open(EXPENSE_DIR + "/daily_expenses.txt", "a") as  daily_expense_file:
