@@ -29,7 +29,7 @@ class CostFunction():
         main_cmd = cmd[0]
         if main_cmd == 'expense':
             amounts = cmd[1].split(",")
-            amounts = [int(x) for x in amounts]
+            amounts = [float(x) for x in amounts]
             current_date = datetime.datetime.now()
             local_date_time = current_date.strftime("%c")
             total_amount = sum(amounts)
@@ -40,7 +40,7 @@ class CostFunction():
                     daily_expense.close()
                 with open(FILE_DIR + "/total_balance.txt", "r+") as total_expense:
                     balance = total_expense.read()
-                    balance = int(balance)
+                    balance = float(balance)
                     balance -= total_amount
                     total_expense.seek(0)
                     total_expense.write(str(balance))
@@ -61,9 +61,9 @@ class CostFunction():
             if Path(FILE_DIR + "/total_balance.txt").is_file():
                 with open(FILE_DIR + "/total_balance.txt", "r+") as total_balance:
                     balance = total_balance.read()
-                    balance = int(balance)
+                    balance = float(balance)
                     amounts = cmd[1].replace(",","")
-                    amounts = int(amounts)
+                    amounts = float(amounts)
                     balance += amounts
 
                     total_balance.seek(0)

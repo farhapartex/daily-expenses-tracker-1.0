@@ -9,7 +9,7 @@
 ### Initial Setup:
 * Clone the repository
 * Enter the folder `daily-expenses`
-* Run the command `python3 expense.py`
+* Run the command `python3 exp.py`
 * Set your initial balance
 * For more command see below 
 
