@@ -18,8 +18,9 @@
 * Get Help: `help`
 * Check current balance: `balance`
 * Add balance: `add amount_money` (Input one amount for one time)
-  * Demo `add 5,000` or `add 5000`
+  * Demo `add 5,000` or `add 5000` or `add 5000.5`
 * Save expenses: `expense cost1,cost2,cost3,.... (cost1,cost2,cost3 are values)`
   * Demo `cost 1280,550,382,120` 
+* To delete current balance : `delete
 * Get expense history: `history`
 * Stop CLI: `stop`
