@@ -1,4 +1,4 @@
-## Expenses Tracker CLI Tool 1.0
+## Daily-expenses-tracker-1.0
 
 #### ***This project is under construction
 
