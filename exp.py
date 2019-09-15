@@ -10,11 +10,17 @@ if __name__ == "__main__":
 
     if not initial.check_initial():
         current_amount = input("Type your current amount: ")
+        
         if len(current_amount) == 0:
             print("Please Enter a valid amount")
             sys.exit()
         else:
-            initial.create_initial_setup(current_amount)
+            current_amount = current_amount.replace(",","")
+            if current_amount.isdigit():
+                initial.create_initial_setup(current_amount)
+            else:
+                print("Please Enter a valid numeric value")
+                sys.exit()
     
     if not initial.check_user():
         initial.create_user()
