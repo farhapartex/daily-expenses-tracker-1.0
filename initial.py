@@ -52,9 +52,6 @@ class InitialComponent():
     def create_initial_setup(self,current_amount):
         if not os.path.exists(EXPENSE_DIR):
             os.makedirs(EXPENSE_DIR)
-
-        # current_amount = input("Type your current amount: ")
-        # print(len(current_amount))
         
         if Path(EXPENSE_DIR).is_dir():
             with open(EXPENSE_DIR+"/total_balance.txt","a") as total_expense_file:
